@@ -1,21 +1,28 @@
 # src/core/data/managers/market_data.py
-from .base import BaseManager
-from ..cache.memory_cache import DataCache
-from ..validation.market_data import MarketDataValidator
+import logging
+from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta
-import asyncio
 import pandas as pd
-from typing import Dict, List, Optional, Any
 
-class MarketDataManager(BaseManager[MarketData]):
-    def __init__(self, source: DataSource, cache_size: int = 1000):
-        super().__init__()
-        self.source = source
-        self.cache = DataCache(cache_size)
-        self.validator = MarketDataValidator()
-        self.batch_size = 100
-        self.max_retries = 3
-        self.base_delay = 1.0  # Base delay for exponential backoff
+# Update relative imports
+from ..models import MarketData
+from ..fetch_modules.polygon.polygon_data_source import PolygonDataSource
+from ..fetch_modules.base.base_data_source import BaseDataSource
+from ..cache.memory_cache import MemoryCache
+from ..database_client import DatabaseClient
+
+class MarketDataManager:
+    """Manages market data operations and caching"""
+    
+    def __init__(
+        self,
+        data_source: Optional[DataSourceBase] = None,
+        cache_ttl: int = 3600
+    ):
+        self.data_source = data_source or PolygonDataSource()
+        self.cache = MemoryCache(ttl_seconds=cache_ttl)
+        self.db_client = DatabaseClient()
+        self.logger = logging.getLogger(__name__)
 
     async def get_market_data(self, symbol: str, start_date: datetime, 
                             end_date: datetime, timeframe: str = "1d") -> pd.DataFrame:

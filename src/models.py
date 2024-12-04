@@ -1,13 +1,20 @@
-# src/core/data/models.py
+# src/models.py
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from typing import Optional, Dict, Any
+from abc import ABC, abstractmethod
 from decimal import Decimal
 import json
 
 @dataclass
-class MarketData:
+class MarketDataRequest:
     symbol: str
+    start_date: datetime
+    end_date: datetime
+    interval: str = "1d"
+
+@dataclass
+class MarketData:
     timestamp: datetime
     open: float
     high: float
@@ -15,74 +22,6 @@ class MarketData:
     close: float
     volume: int
     vwap: Optional[float] = None
-    transactions: Optional[int] = None
-    source: str = 'UNKNOWN'
-
-    def __post_init__(self):
-        if not self.symbol:
-            raise ValueError("Symbol cannot be empty")
-        if self.volume < 0:
-            raise ValueError("Volume cannot be negative")
-        if not (self.low <= self.open <= self.high and 
-                self.low <= self.close <= self.high):
-            raise ValueError("Price values are inconsistent")
-        if self.transactions is not None and self.transactions < 0:
-            raise ValueError("Transactions cannot be negative")
-        if self.vwap is not None and self.vwap <= 0:
-            raise ValueError("VWAP must be positive")
-
-    @property
-    def price_range(self) -> float:
-        """Calculate the price range (high - low)"""
-        return self.high - self.low
-
-    @property
-    def price_movement(self) -> float:
-        """Calculate price movement percentage"""
-        return ((self.close - self.open) / self.open) * 100
-
-    @property
-    def is_positive_day(self) -> bool:
-        """Check if closing price is higher than opening price"""
-        return self.close > self.open
-
-    def to_dict(self) -> Dict[str, Any]:
-        """Convert to dictionary with ISO format timestamp"""
-        data = asdict(self)
-        data['timestamp'] = self.timestamp.isoformat()
-        return data
-
-    def to_json(self) -> str:
-        """Convert to JSON string"""
-        return json.dumps(self.to_dict())
-
-    @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'MarketData':
-        """Create MarketData instance from dictionary"""
-        if isinstance(data['timestamp'], str):
-            data['timestamp'] = datetime.fromisoformat(data['timestamp'])
-        return cls(**data)
-
-@dataclass
-class DataSourceConfig:
-    api_key: Optional[str] = None
-    cache_size: int = 1000
-    batch_size: int = 100
-    max_retries: int = 3
-    timeout: float = 30.0
-    retry_delay: float = 1.0
-
-    def __post_init__(self):
-        if self.cache_size <= 0:
-            raise ValueError("Cache size must be positive")
-        if self.batch_size <= 0:
-            raise ValueError("Batch size must be positive")
-        if self.max_retries < 0:
-            raise ValueError("Max retries cannot be negative")
-        if self.timeout <= 0:
-            raise ValueError("Timeout must be positive")
-        if self.retry_delay <= 0:
-            raise ValueError("Retry delay must be positive")
 
 # src/core/data/exceptions.py
 class DataError(Exception):
@@ -108,7 +47,7 @@ from functools import lru_cache
 from .models import MarketData, DataSourceConfig
 from .exceptions import DataValidationError, DataFetchError
 from .database_client import DatabaseClient
-from .fetch_modules.polygon_client import PolygonClient
+from .fetch_modules.polygon.polygon_client import PolygonClient
 
 class DataSource(ABC):
     """Base interface for data sources"""

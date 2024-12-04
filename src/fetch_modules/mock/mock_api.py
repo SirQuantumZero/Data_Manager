@@ -1,15 +1,21 @@
-# FILE: src/core/services/mock_api.py
+# src\fetch_modules\mock\mock_api.py
 
 import logging
 from typing import Dict, Any
+import random
+from datetime import datetime, timedelta
+import pandas as pd
+from typing import Dict, Any, List
 
+# Update relative imports to match new structure
+from ...models import MarketData
+from ..base.base_data_source_ import DataSourceBase
 
-class MockAPI:
-    """
-    Simulates API responses for development purposes.
-    """
-
-    def __init__(self):
+class MockAPIClient(DataSourceBase):
+    """Mock API client for testing"""
+    
+    def __init__(self, config: Dict[str, Any]):
+        self.config = config
         self.logger = logging.getLogger(__name__)
 
     def get_mock_stock_data(self, symbol: str) -> Dict[str, Any]:

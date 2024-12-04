@@ -1,8 +1,34 @@
-# src/core/data/cache/memory_cache.py
-from typing import Optional, Any, Dict
+# src/cache/memory_cache.py
+
+from typing import Dict, Any, Optional
 from datetime import datetime, timedelta
-import asyncio
+import logging
 from collections import OrderedDict
+import asyncio
+from threading import Lock
+import json
+
+class CacheEntry:
+    def __init__(self, data: Any, expires_at: datetime):
+        self.data = data
+        self.expires_at = expires_at
+
+class MemoryCache:
+    def __init__(self, ttl_seconds: int = 3600):
+        self.cache: Dict[str, CacheEntry] = {}
+        self.ttl = timedelta(seconds=ttl_seconds)
+        self.lock = Lock()
+        self.logger = logging.getLogger(__name__)
+
+    def get(self, key: str) -> Optional[Any]:
+        """Get value from cache if not expired"""
+        with self.lock:
+            if key in self.cache:
+                entry = self.cache[key]
+                if datetime.now() < entry.expires_at:
+                    return entry.data
+                del self.cache[key]
+        return None
 
 class DataCache:
     """Thread-safe LRU cache with TTL support"""

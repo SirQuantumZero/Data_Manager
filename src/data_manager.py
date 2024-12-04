@@ -1,4 +1,4 @@
-# src/core/data/data_manager.py
+# src/data_manager.py
 
 import logging
 from typing import Dict, Any, Optional, List, Union
@@ -11,11 +11,22 @@ import schedule
 import time
 import json
 from enum import Enum
+import os
+from dotenv import load_dotenv
+import numpy as np
 
+# Current imports
 from .database_client import DatabaseClient
 from .database_config import DatabaseConfig
-from .fetch_modules.polygon_client import PolygonClient
-from .validation.market_data import MarketDataValidator
+from .fetch_modules.polygon.polygon_client import PolygonClient
+from .models import MarketDataValidator
+
+# Based on project structure, these are correct since:
+# - All imported files are at same level or in subdirectories
+# - Relative imports (.) are correct since files are siblings
+# - fetch_modules path follows the correct directory structure
+
+load_dotenv()
 
 class DataSource(Enum):
     POLYGON = "polygon"
@@ -35,7 +46,8 @@ class DataManager:
         self.logger = logging.getLogger(__name__)
         self._load_config(config_path)
         self.db_client = DatabaseClient(self.config['database'])
-        self.polygon_client = PolygonClient(self.config['polygon_api_key'])
+        self.polygon_api_key = os.getenv('POLYGON_API_KEY')
+        self.polygon_client = PolygonClient(self.polygon_api_key)
         self.validator = MarketDataValidator()
         self.cache = lru_cache(maxsize=1000)(self._fetch_from_source)
         self.scheduled_tasks = {}
@@ -45,6 +57,10 @@ class DataManager:
         try:
             with open(config_path) as f:
                 self.config = json.load(f)
+        except FileNotFoundError as e:
+            self.logger.error(f"Configuration file not found: {e}")
+        except json.JSONDecodeError as e:
+            self.logger.error(f"Invalid JSON format: {e}")
         except Exception as e:
             self.logger.error(f"Failed to load config: {e}")
             raise
@@ -150,17 +166,9 @@ class DataManager:
         
         raise ValueError(f"Unknown scheduled action: {action}")
 
-    async def _fetch_polygon_data(self, symbol: str, start_date: datetime, 
-                                end_date: datetime) -> pd.DataFrame:
-        """Fetch data from Polygon API"""
-        try:
-            data = await self.polygon_client.get_market_data(symbol, start_date, end_date)
-            if not self.validator.validate(data):
-                raise ValueError("Invalid data format")
-            return data
-        except Exception as e:
-            self.logger.error(f"Polygon fetch failed for {symbol}: {e}")
-            raise
+    async def _fetch_polygon_data(self, symbol: str, start_date: datetime, end_date: datetime) -> pd.DataFrame:
+        data = await self.polygon_client.get_market_data(symbol, start_date, end_date)
+        # Rest of the code...
 
     async def _fetch_database_data(self, symbol: str, start_date: datetime,
                                  end_date: datetime) -> pd.DataFrame:

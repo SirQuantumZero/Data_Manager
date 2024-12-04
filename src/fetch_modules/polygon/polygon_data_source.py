@@ -3,15 +3,17 @@ from typing import Dict, Any, Optional
 from datetime import datetime
 import pandas as pd
 
-from core.data.fetch_modules.base.data_source_base import DataSource
+# Update relative imports
+from ..base.base_data_source_ import DataSourceBase
+from ...models import MarketData
 from .polygon_client import PolygonClient
 
-class PolygonDataSource(DataSource):
-    """Polygon API data source implementation"""
-    
+class PolygonDataSource(DataSourceBase):
+    """High-level interface for Polygon.io data"""
+
     def __init__(self, api_key: Optional[str] = None):
+        self.client = PolygonClient(api_key)
         self.logger = logging.getLogger(__name__)
-        self.client = PolygonClient(api_key).get_client()
 
     async def fetch_data(
         self,

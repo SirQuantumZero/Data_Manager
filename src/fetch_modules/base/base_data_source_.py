@@ -1,10 +1,13 @@
-# src/core/data/fetch_modules/data_source_base.py
+# src/fetch_modules/base/data_source_base.py
+
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from datetime import datetime
 import pandas as pd
 
-class DataSource(ABC):
+class DataSourceBase(ABC):
+    """Abstract base class for all data sources"""
+
     @abstractmethod
     async def fetch_data(
         self,
@@ -12,7 +15,16 @@ class DataSource(ABC):
         start_date: datetime,
         end_date: datetime
     ) -> pd.DataFrame:
-        """Fetch market data for a symbol"""
+        """Fetch market data for a symbol
+        
+        Args:
+            symbol: Stock symbol
+            start_date: Start date
+            end_date: End date
+            
+        Returns:
+            DataFrame with OHLCV data
+        """
         pass
 
     @abstractmethod

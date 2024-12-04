@@ -7,11 +7,30 @@ from datetime import datetime, timedelta
 import pandas as pd
 from dotenv import load_dotenv
 import mysql.connector
+from typing import Optional
 
 from .polygon_data_source import PolygonDataSource
 from .polygon_client import PolygonClient
+from ..base.base_data_source_ import DataSourceBase
+from ...models import MarketData
 
 logger = logging.getLogger(__name__)
+
+class PolygonFetcher:
+    """Handles data fetching from Polygon.io"""
+    
+    def __init__(self, api_key: Optional[str] = None):
+        self.data_source = PolygonDataSource(api_key)
+        self.logger = logging.getLogger(__name__)
+
+    async def fetch_historical_data(
+        self,
+        symbol: str,
+        start_date: datetime,
+        end_date: datetime
+    ) -> pd.DataFrame:
+        """Fetch historical market data"""
+        return await self.data_source.fetch_data(symbol, start_date, end_date)
 
 async def main():
     """CLI tool for fetching Polygon data"""

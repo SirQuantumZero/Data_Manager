@@ -1,17 +1,18 @@
-# src/core/data/database_client.py
-import pandas as pd
+# src/database_client.py
 import mysql.connector
-from typing import Optional
+from typing import Dict, Any
+import logging
+from datetime import datetime
+import pandas as pd
+
+# If importing from database_config.py (same directory level)
+from .database_config import DatabaseConfig
 
 
 class DatabaseClient:
-    def __init__(self, connection_params: Optional[dict] = None):
-        self.connection_params = connection_params or {
-            "host": "localhost",
-            "user": "root",
-            "password": "",
-            "database": "quantumzero",
-        }
+    def __init__(self, config: Dict[str, Any]):
+        self.config = config
+        self.logger = logging.getLogger(__name__)
         self.connection = None
         self.cursor = None
 
