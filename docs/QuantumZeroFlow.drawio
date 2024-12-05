@@ -1,0 +1,739 @@
+<mxfile host="app.diagrams.net" modified="2024-03-19">
+  <diagram id="trading_platform" name="QuantumZero Architecture">
+    <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Core System -->
+        <mxCell id="core" value="QuantumZero Core" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="200" height="80" />
+        </mxCell>
+
+        <!-- Service Layer -->
+        <mxCell id="services" value="Service Orchestrator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="500" y="140" width="200" height="60" />
+        </mxCell>
+
+        <!-- Add connection from Core to Service Layer -->
+        <mxCell id="core_to_service" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="core" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Data Pipeline -->
+        <mxCell id="data" value="Data Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="160" height="60" />
+        </mxCell>
+
+        <!-- Trading Engine -->
+        <mxCell id="trading" value="Trading Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="400" y="240" width="160" height="60" />
+        </mxCell>
+
+        <!-- Enhanced ML Engine with Subcomponents -->
+        <mxCell id="ml" value="ML Engine" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#6a00ff;fontColor=#ffffff;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="600" y="240" width="200" height="130">
+            <mxCell id="ml1" value="Model Training Pipeline" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="26" width="200" height="26" />
+            </mxCell>
+            <mxCell id="ml2" value="Real-time Inference Engine" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="52" width="200" height="26" />
+            </mxCell>
+            <mxCell id="ml3" value="Strategy Optimization" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="78" width="200" height="26" />
+            </mxCell>
+            <mxCell id="ml4" value="Market Pattern Recognition" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="104" width="200" height="26" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Risk Management -->
+        <mxCell id="risk" value="Risk Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="800" y="240" width="160" height="60" />
+        </mxCell>
+
+        <!-- Market Data Services -->
+        <mxCell id="market_data" value="Market Data Services" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e3c800;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="160" height="150">
+            <mxCell id="md1" value="Polygon" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="md2" value="Alpaca" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="md3" value="TradingView" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="md4" value="Robinhood" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Trading Components -->
+        <mxCell id="trading_components" value="Trading Components" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#008a00;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="400" y="340" width="160" height="150">
+            <mxCell id="tc1" value="Order Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="tc2" value="Position Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="tc3" value="Strategy Execution" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="tc4" value="Portfolio Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ML Components -->
+        <mxCell id="ml_components" value="ML Components" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#6a00ff;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="600" y="340" width="160" height="150">
+            <mxCell id="mlc1" value="Model Training" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="mlc2" value="Feature Engineering" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="mlc3" value="Prediction Engine" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="mlc4" value="Model Registry" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Risk Components -->
+        <mxCell id="risk_components" value="Risk Components" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#a20025;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="800" y="340" width="160" height="150">
+            <mxCell id="rc1" value="Position Sizing" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="rc2" value="Stop Loss Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="rc3" value="Exposure Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="rc4" value="Risk Analytics" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Infrastructure -->
+        <mxCell id="infra" value="Infrastructure" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="240" width="160" height="150">
+            <mxCell id="i1" value="MySQL Database" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="i2" value="Logging System" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="i3" value="Monitoring" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="i4" value="Service Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Authentication & Security -->
+        <mxCell id="auth" value="Security Services" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d80073;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="340" width="160" height="150">
+            <mxCell id="s1" value="User Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="s2" value="API Key Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="s3" value="Session Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="s4" value="Access Control" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Frontend -->
+        <mxCell id="frontend" value="Frontend Services" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#76608a;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="200" y="540" width="160" height="150">
+            <mxCell id="f1" value="Web Interface" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="f2" value="Strategy Builder UI" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="f3" value="Dashboard" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="f4" value="Analytics Views" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Backtesting Engine -->
+        <mxCell id="backtest" value="Backtesting Engine" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#008a00;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="400" y="540" width="160" height="150">
+            <mxCell id="bt1" value="Historical Data" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="bt2" value="Strategy Testing" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="bt3" value="Performance Analytics" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="bt4" value="Risk Simulation" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Market Scanner -->
+        <mxCell id="scanner" value="Market Scanner" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#0050ef;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="600" y="540" width="160" height="150">
+            <mxCell id="sc1" value="Technical Screener" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="sc2" value="Pattern Recognition" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="sc3" value="Volume Analysis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="sc4" value="Custom Filters" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- News & Sentiment Analysis -->
+        <mxCell id="news" value="News Analysis" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#6d8764;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="800" y="540" width="160" height="150">
+            <mxCell id="n1" value="News Aggregator" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="n2" value="Sentiment Analysis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="n3" value="Market Impact Analysis" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="n4" value="Economic Calendar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- System Health Monitor -->
+        <mxCell id="health" value="System Monitor" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="540" width="160" height="150">
+            <mxCell id="h1" value="Service Health" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="h2" value="System Metrics" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="h3" value="Alert Management" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="h4" value="Auto Recovery" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="gateway" value="API Gateway" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="200" y="740" width="160" height="150">
+            <mxCell id="g1" value="Request Routing" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="g2" value="Rate Limiting" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="g3" value="Authentication" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="g4" value="Load Balancing" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Strategy Builder -->
+        <mxCell id="strategy" value="Strategy Builder" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#008a00;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="400" y="740" width="160" height="150">
+            <mxCell id="sb1" value="Visual Editor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="sb2" value="Custom Indicators" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="sb3" value="Strategy Templates" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="sb4" value="Parameter Optimization" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Alert System -->
+        <mxCell id="alerts" value="Alert System" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#a20025;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="600" y="740" width="160" height="150">
+            <mxCell id="a1" value="Email Notifications" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="a2" value="SMS Alerts" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="a3" value="Push Notifications" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="a4" value="Webhook Integration" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Data Storage -->
+        <mxCell id="storage" value="Data Storage" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="800" y="740" width="160" height="150">
+            <mxCell id="ds1" value="Time Series Data" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="ds2" value="Strategy Database" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="ds3" value="Trade History" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="ds4" value="Market Data Cache" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Deployment Pipeline -->
+        <mxCell id="deployment" value="Deployment Pipeline" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="740" width="160" height="150">
+            <mxCell id="dp1" value="CI/CD Pipeline" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="30" width="160" height="30" />
+            </mxCell>
+            <mxCell id="dp2" value="Testing Framework" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="60" width="160" height="30" />
+            </mxCell>
+            <mxCell id="dp3" value="Version Control" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="90" width="160" height="30" />
+            </mxCell>
+            <mxCell id="dp4" value="Docker Containers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontColor=#ffffff" vertex="1">
+              <mxGeometry y="120" width="160" height="30" />
+            </mxCell>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Workflow Orchestrator -->
+        <mxCell id="workflow" value="Workflow Orchestrator" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="200" y="940" width="160" height="150">
+            <mxCell id="w1" value="Task Scheduling" />
+            <mxCell id="w2" value="Pipeline Management" />
+            <mxCell id="w3" value="Error Handling" />
+            <mxCell id="w4" value="Recovery Procedures" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message Queue -->
+        <mxCell id="queue" value="Message Queue" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="400" y="940" width="160" height="150">
+            <mxCell id="q1" value="Real-time Events" />
+            <mxCell id="q2" value="Command Queue" />
+            <mxCell id="q3" value="Dead Letter Queue" />
+            <mxCell id="q4" value="Message Persistence" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Service Registry -->
+        <mxCell id="registry" value="Service Registry" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="600" y="940" width="160" height="150">
+            <mxCell id="sr1" value="Service Discovery" />
+            <mxCell id="sr2" value="Load Balancing" />
+            <mxCell id="sr3" value="Health Checks" />
+            <mxCell id="sr4" value="Configuration Store" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Data Quality -->
+        <mxCell id="quality" value="Data Quality" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#0050ef;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="800" y="940" width="160" height="150">
+            <mxCell id="dq1" value="Validation Rules" />
+            <mxCell id="dq2" value="Data Cleansing" />
+            <mxCell id="dq3" value="Quality Metrics" />
+            <mxCell id="dq4" value="Error Handling" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- API Documentation -->
+        <mxCell id="apidocs" value="API Documentation" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#76608a;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="940" width="160" height="150">
+            <mxCell id="ad1" value="OpenAPI Specs" />
+            <mxCell id="ad2" value="API Reference" />
+            <mxCell id="ad3" value="Integration Guides" />
+            <mxCell id="ad4" value="SDK Documentation" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Task Scheduler -->
+        <mxCell id="scheduler" value="Task Scheduler" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="200" y="1140" width="160" height="150">
+            <mxCell id="sch1" value="Cron Jobs" />
+            <mxCell id="sch2" value="Task Queues" />
+            <mxCell id="sch3" value="Job Prioritization" />
+            <mxCell id="sch4" value="Failure Recovery" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Cache Management -->
+        <mxCell id="cache" value="Cache Management" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="400" y="1140" width="160" height="150">
+            <mxCell id="cm1" value="Market Data Cache" />
+            <mxCell id="cm2" value="Strategy Cache" />
+            <mxCell id="cm3" value="Results Cache" />
+            <mxCell id="cm4" value="Cache Invalidation" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Error Handling -->
+        <mxCell id="errors" value="Error Management" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#a20025;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="600" y="1140" width="160" height="150">
+            <mxCell id="em1" value="Error Classification" />
+            <mxCell id="em2" value="Recovery Strategies" />
+            <mxCell id="em3" value="Incident Management" />
+            <mxCell id="em4" value="Error Reporting" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Performance Monitoring -->
+        <mxCell id="performance" value="Performance Monitor" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="800" y="1140" width="160" height="150">
+            <mxCell id="pm1" value="Metrics Collection" />
+            <mxCell id="pm2" value="Performance Analytics" />
+            <mxCell id="pm3" value="Resource Monitoring" />
+            <mxCell id="pm4" value="Alerting System" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Load Balancer -->
+        <mxCell id="loadbalancer" value="Load Balancer" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1140" width="160" height="150">
+            <mxCell id="lb1" value="Traffic Distribution" />
+            <mxCell id="lb2" value="Health Checking" />
+            <mxCell id="lb3" value="SSL Termination" />
+            <mxCell id="lb4" value="Request Routing" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Frontend Framework -->
+        <mxCell id="web_framework" value="Web Framework" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#76608a;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="200" y="1340" width="160" height="150">
+            <mxCell id="wf1" value="React/Next.js" />
+            <mxCell id="wf2" value="TradingView Charts" />
+            <mxCell id="wf3" value="WebSocket Client" />
+            <mxCell id="wf4" value="State Management" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- User Interface Components -->
+        <mxCell id="ui_components" value="UI Components" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#76608a;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="400" y="1340" width="160" height="150">
+            <mxCell id="ui1" value="Live Trading Dashboard" />
+            <mxCell id="ui2" value="Strategy Builder Canvas" />
+            <mxCell id="ui3" value="Portfolio Analytics" />
+            <mxCell id="ui4" value="Risk Management Panel" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Data Science Toolkit -->
+        <mxCell id="data_science" value="Data Science Tools" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#6a00ff;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="600" y="1340" width="160" height="150">
+            <mxCell id="ds1" value="Jupyter Integration" />
+            <mxCell id="ds2" value="Data Visualization" />
+            <mxCell id="ds3" value="Model Development" />
+            <mxCell id="ds4" value="Research Environment" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- API Integration Hub -->
+        <mxCell id="api_hub" value="API Integration Hub" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="800" y="1340" width="160" height="150">
+            <mxCell id="api1" value="API Adapters" />
+            <mxCell id="api2" value="Rate Limiting" />
+            <mxCell id="api3" value="Error Handling" />
+            <mxCell id="api4" value="Data Transformation" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DevOps Tools -->
+        <mxCell id="devops" value="DevOps Tools" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#647687;fontColor=#ffffff" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1340" width="160" height="150">
+            <mxCell id="do1" value="GitHub Actions" />
+            <mxCell id="do2" value="Docker Compose" />
+            <mxCell id="do3" value="K8s Deployment" />
+            <mxCell id="do4" value="Infrastructure as Code" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Add connections between components -->
+        <!-- Service Layer to Components -->
+        <mxCell id="service_to_data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="services" target="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="service_to_trading" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="services" target="trading">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Add Critical Connections -->
+        <!-- ML Engine to Trading Engine -->
+        <mxCell id="ml_to_trading" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="ml" target="trading">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Trading Engine to Risk Management -->
+        <mxCell id="trading_to_risk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="trading" target="risk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Data Pipeline to ML Engine -->
+        <mxCell id="data_to_ml" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="data" target="ml">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Market Data to Data Pipeline -->
+        <mxCell id="market_to_data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="market_data" target="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Core Connections -->
+        <mxCell id="core_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Core to Services -->
+          <mxCell id="core_to_services" style="exitX=0.5;exitY=1;entryX=0.5;entryY=0" source="core" target="services"/>
+          
+          <!-- Services to Components -->
+          <mxCell id="services_to_data" style="exitX=0.25;exitY=1" source="services" target="data"/>
+          <mxCell id="services_to_trading" style="exitX=0.5;exitY=1" source="services" target="trading"/>
+          <mxCell id="services_to_ml" style="exitX=0.75;exitY=1" source="services" target="ml"/>
+          
+          <!-- Data Flow -->
+          <mxCell id="market_to_ml" style="exitX=1;exitY=0.5" source="market_data" target="ml"/>
+          <mxCell id="ml_to_trading" style="exitX=0;exitY=0.5" source="ml" target="trading"/>
+          <mxCell id="trading_to_risk" style="exitX=1;exitY=0.5" source="trading" target="risk"/>
+          
+          <!-- Monitoring -->
+          <mxCell id="system_to_monitor" style="exitX=1;exitY=0.5" source="health" target="infra"/>
+          
+          <!-- Security -->
+          <mxCell id="gateway_to_auth" style="exitX=1;exitY=0.5" source="gateway" target="auth"/>
+        </mxCell>
+
+        <!-- Frontend Connections -->
+        <mxCell id="frontend_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Frontend to Gateway -->
+          <mxCell id="frontend_to_gateway" style="exitX=0.5;exitY=1" source="frontend" target="gateway"/>
+          
+          <!-- Gateway to Services -->
+          <mxCell id="gateway_to_services" style="exitX=0.5;exitY=0" source="gateway" target="services"/>
+        </mxCell>
+
+        <!-- ML Pipeline Connections -->
+        <mxCell id="ml_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- ML to Strategy -->
+          <mxCell id="ml_to_strategy" style="exitX=0.5;exitY=1" source="ml" target="strategy"/>
+          
+          <!-- ML to Scanner -->
+          <mxCell id="ml_to_scanner" style="exitX=0.75;exitY=1" source="ml" target="scanner"/>
+        </mxCell>
+
+        <!-- Risk Management Connections -->
+        <mxCell id="risk_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Risk to Alerts -->
+          <mxCell id="risk_to_alerts" style="exitX=0.5;exitY=1" source="risk" target="alerts"/>
+          
+          <!-- Risk to Storage -->
+          <mxCell id="risk_to_storage" style="exitX=0.75;exitY=1" source="risk" target="storage"/>
+        </mxCell>
+
+        <!-- Infrastructure Connections -->
+        <mxCell id="infra_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Infrastructure to Health -->
+          <mxCell id="infra_to_health" style="exitX=0.5;exitY=1" source="infra" target="health"/>
+          
+          <!-- Health to Alerts -->
+          <mxCell id="health_to_alerts" style="exitX=0;exitY=0.5" source="health" target="alerts"/>
+        </mxCell>
+
+        <!-- Data Flow Connections -->
+        <mxCell id="data_flow" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Scanner to ML -->
+          <mxCell id="scanner_to_ml" style="exitX=0.5;exitY=0" source="scanner" target="ml"/>
+          
+          <!-- News to ML -->
+          <mxCell id="news_to_ml" style="exitX=0.5;exitY=0" source="news" target="ml"/>
+          
+          <!-- ML to Storage -->
+          <mxCell id="ml_to_storage" style="exitX=1;exitY=0.5" source="ml" target="storage"/>
+        </mxCell>
+
+        <!-- System Management -->
+        <mxCell id="system_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Registry to Services -->
+          <mxCell id="registry_to_services" style="exitX=0.5;exitY=0" source="registry" target="services"/>
+          
+          <!-- Queue to Workflow -->
+          <mxCell id="queue_to_workflow" style="exitX=0;exitY=0.5" source="queue" target="workflow"/>
+          
+          <!-- Scheduler to Workflow -->
+          <mxCell id="scheduler_to_workflow" style="exitX=0.5;exitY=0" source="scheduler" target="workflow"/>
+        </mxCell>
+
+        <!-- Quality & Monitoring -->
+        <mxCell id="monitoring_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Quality to Data -->
+          <mxCell id="quality_to_data" style="exitX=0.5;exitY=0" source="quality" target="data"/>
+          
+          <!-- Performance to Health -->
+          <mxCell id="performance_to_health" style="exitX=0.5;exitY=0" source="performance" target="health"/>
+          
+          <!-- Error to Alerts -->
+          <mxCell id="error_to_alerts" style="exitX=1;exitY=0.5" source="errors" target="alerts"/>
+        </mxCell>
+
+        <!-- Backend Service Connections -->
+        <mxCell id="backend_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Cache to Storage -->
+          <mxCell id="cache_to_storage" style="exitX=1;exitY=0.5" source="cache" target="storage"/>
+          
+          <!-- Cache to Services -->
+          <mxCell id="cache_to_services" style="exitX=0.5;exitY=0" source="cache" target="services"/>
+          
+          <!-- Load Balancer to Gateway -->
+          <mxCell id="lb_to_gateway" style="exitX=0;exitY=0.5" source="loadbalancer" target="gateway"/>
+        </mxCell>
+
+        <!-- Strategy Connections -->
+        <mxCell id="strategy_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Strategy to Backtest -->
+          <mxCell id="strategy_to_backtest" style="exitX=0;exitY=0.5" source="strategy" target="backtest"/>
+          
+          <!-- Strategy to Trading -->
+          <mxCell id="strategy_to_trading" style="exitX=0.5;exitY=0" source="strategy" target="trading"/>
+          
+          <!-- Strategy to Storage -->
+          <mxCell id="strategy_to_storage" style="exitX=1;exitY=0.5" source="strategy" target="storage"/>
+        </mxCell>
+
+        <!-- Documentation Connections -->
+        <mxCell id="doc_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- API Docs to Gateway -->
+          <mxCell id="docs_to_gateway" style="exitX=0;exitY=0.5" source="apidocs" target="gateway"/>
+        </mxCell>
+
+        <!-- Message Queue Connections -->
+        <mxCell id="queue_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Queue to Services -->
+          <mxCell id="queue_to_services" style="exitX=0.5;exitY=0" source="queue" target="services"/>
+          
+          <!-- Queue to Trading -->
+          <mxCell id="queue_to_trading" style="exitX=0;exitY=0.5" source="queue" target="trading"/>
+        </mxCell>
+
+        <!-- Real-time Data Flow Connections -->
+        <mxCell id="realtime_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Market Data to Trading -->
+          <mxCell id="market_to_trading" style="exitX=1;exitY=0.5" source="market_data" target="trading"/>
+          
+          <!-- Trading to ML Real-time -->
+          <mxCell id="trading_to_ml" style="exitX=1;exitY=0.5" source="trading" target="ml2"/>
+          
+          <!-- ML to Risk -->
+          <mxCell id="ml_to_risk" style="exitX=1;exitY=0.5" source="ml" target="risk"/>
+        </mxCell>
+
+        <!-- Infrastructure Connections -->
+        <mxCell id="monitoring_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Logging to All Components -->
+          <mxCell id="logging_connections" style="exitX=0;exitY=0.5" source="i2" target="services"/>
+          
+          <!-- Database to Components -->
+          <mxCell id="db_connections" style="exitX=0;exitY=0.5" source="i1" target="services"/>
+        </mxCell>
+
+        <!-- Security Layer Connections -->
+        <mxCell id="security_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Auth to Frontend -->
+          <mxCell id="auth_to_frontend" style="exitX=0;exitY=0.5" source="auth" target="frontend"/>
+          
+          <!-- Auth to Services -->
+          <mxCell id="auth_to_services" style="exitX=0.5;exitY=0" source="auth" target="services"/>
+        </mxCell>
+
+        <!-- Backend Process Connections -->
+        <mxCell id="process_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Backtest to Trading -->
+          <mxCell id="backtest_to_trading" style="exitX=0.5;exitY=0" source="backtest" target="trading"/>
+          
+          <!-- Scanner to ML -->
+          <mxCell id="scanner_to_ml" style="exitX=0.5;exitY=0" source="scanner" target="ml"/>
+        </mxCell>
+
+        <!-- Storage Connections -->
+        <mxCell id="storage_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Storage to ML -->
+          <mxCell id="storage_to_ml" style="exitX=0.5;exitY=0" source="storage" target="ml"/>
+          
+          <!-- Storage to Trading -->
+          <mxCell id="storage_to_trading" style="exitX=0;exitY=0.5" source="storage" target="trading"/>
+          
+          <!-- Storage to Infrastructure -->
+          <mxCell id="storage_to_infra" style="exitX=1;exitY=0.5" source="storage" target="infra"/>
+        </mxCell>
+
+        <!-- Performance Monitoring -->
+        <mxCell id="perf_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Performance to Trading -->
+          <mxCell id="perf_to_trading" style="exitX=0;exitY=0.5" source="performance" target="trading"/>
+          
+          <!-- Performance to ML -->
+          <mxCell id="perf_to_ml" style="exitX=0.5;exitY=0" source="performance" target="ml"/>
+        </mxCell>
+
+        <!-- Error Management -->
+        <mxCell id="error_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Errors to Services -->
+          <mxCell id="errors_to_services" style="exitX=0.5;exitY=0" source="errors" target="services"/>
+          
+          <!-- Errors to Infrastructure -->
+          <mxCell id="errors_to_infra" style="exitX=1;exitY=0.5" source="errors" target="infra"/>
+        </mxCell>
+
+        <!-- Cache Connections -->
+        <mxCell id="cache_connections" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <!-- Cache to Trading -->
+          <mxCell id="cache_to_trading" style="exitX=0;exitY=0.5" source="cache" target="trading"/>
+          
+          <!-- Cache to ML -->
+          <mxCell id="cache_to_ml" style="exitX=0.5;exitY=0" source="cache" target="ml"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
