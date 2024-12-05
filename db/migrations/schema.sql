@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS users (
     settings JSON
 );
 
--- Market Data Table
+-- Market Data Table with fixed partitioning
 CREATE TABLE IF NOT EXISTS market_data (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT NOT NULL AUTO_INCREMENT,
     symbol VARCHAR(20) NOT NULL,
     timestamp DATETIME NOT NULL,
     data_type ENUM('STOCK', 'OPTION', 'FOREX', 'CRYPTO') NOT NULL,
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS market_data (
     source VARCHAR(20) DEFAULT 'POLYGON',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id, timestamp),  -- Include timestamp in primary key
     CONSTRAINT chk_prices CHECK (
         high >= low AND 
         high >= open AND 
@@ -57,13 +58,12 @@ CREATE TABLE IF NOT EXISTS market_data (
     INDEX idx_symbol_time (symbol, timestamp),
     INDEX idx_type_time (data_type, timestamp),
     INDEX idx_source (source)
-) ENGINE=InnoDB;
-
--- Fixed partitioning using timestamp column
-ALTER TABLE market_data
+) ENGINE=InnoDB
 PARTITION BY RANGE (TO_DAYS(timestamp)) (
-    PARTITION p0 VALUES LESS THAN (TO_DAYS('2024-01-01')),
-    PARTITION p1 VALUES LESS THAN (TO_DAYS('2025-01-01')),
+    PARTITION p0 VALUES LESS THAN (TO_DAYS('2024-12-31')),
+    PARTITION p1 VALUES LESS THAN (TO_DAYS('2025-12-31')),
+    PARTITION p2 VALUES LESS THAN (TO_DAYS('2026-12-31')),
+    PARTITION p3 VALUES LESS THAN (TO_DAYS('2027-12-31')),
     PARTITION p_future VALUES LESS THAN MAXVALUE
 );
 
@@ -289,9 +289,9 @@ END //
 
 CREATE PROCEDURE rotate_partitions()
 BEGIN
-    -- Add new future partition
+    -- Use fixed dates for partitions
     ALTER TABLE market_data REORGANIZE PARTITION p_future INTO (
-        PARTITION p_current VALUES LESS THAN (UNIX_TIMESTAMP(DATE_ADD(NOW(), INTERVAL 1 YEAR))),
+        PARTITION p4 VALUES LESS THAN (TO_DAYS('2028-12-31')),
         PARTITION p_future VALUES LESS THAN MAXVALUE
     );
 END //

@@ -510,3 +510,67 @@ SELECT 'Database setup and verification completed successfully' as status;
 -- Log completion
 INSERT INTO system_logs (level, component, message)
 VALUES ('INFO', 'TEST_SUITE', 'Schema verification completed successfully');
+
+def _validate_sql_statement(self, stmt: str) -> tuple[bool, str]:
+    """Validate SQL statement before execution."""
+    with self.debug_operation("SQL Statement Validation") as debug:
+        # Remove comments and clean whitespace
+        cleaned_stmt = re.sub(r'--.*$', '', stmt, flags=re.MULTILINE)
+        cleaned_stmt = ' '.join(cleaned_stmt.split())
+        
+        if 'PARTITION BY RANGE' in stmt:
+            with self.debug_operation("Partition Validation") as partition_debug:
+                try:
+                    # Extract partition block with balanced parentheses
+                    partition_start = cleaned_stmt.index('PARTITION BY RANGE')
+                    level = 0
+                    end_pos = -1
+                    
+                    # Include the full partition definition by tracking nested parentheses
+                    for i in range(partition_start, len(cleaned_stmt)):
+                        if cleaned_stmt[i] == '(':
+                            level += 1
+                        elif cleaned_stmt[i] == ')':
+                            level -= 1
+                            if level == 0:
+                                end_pos = i + 1
+                                break
+                    
+                    if end_pos == -1:
+                        return False, "Cannot find complete partition block"
+                        
+                    partition_def = cleaned_stmt[partition_start:end_pos]
+                    self.logger.debug(f"Extracted partition block:\n{partition_def}")
+
+                    # Match partitions including TO_DAYS functions
+                    partition_pattern = r'PARTITION\s+p[0-9a-z_]+\s+VALUES\s+LESS\s+THAN\s*\([^)]+\)'
+                    maxval_pattern = r'PARTITION\s+p[0-9a-z_]+\s+VALUES\s+LESS\s+THAN\s+MAXVALUE'
+                    
+                    # Find both regular partitions and MAXVALUE partition
+                    regular_partitions = re.findall(partition_pattern, partition_def, re.IGNORECASE)
+                    maxval_partitions = re.findall(maxval_pattern, partition_def, re.IGNORECASE)
+                    total_partitions = len(regular_partitions) + len(maxval_partitions)
+                    
+                    self.logger.debug(f"Found {total_partitions} total partitions:")
+                    self.logger.debug(f"Regular partitions: {len(regular_partitions)}")
+                    self.logger.debug(f"MAXVALUE partitions: {len(maxval_partitions)}")
+                    
+                    if total_partitions < 2:
+                        return False, f"Invalid partition definition - found {total_partitions} partitions, need at least 2"
+                    
+                    if len(maxval_partitions) == 0:
+                        return False, "Missing MAXVALUE partition"
+                    
+                    self.logger.debug("Partition validation successful")
+                    
+                except ValueError as e:
+                    return False, f"Partition syntax error: {str(e)}"
+                    
+        return True, ""
+
+PARTITION BY RANGE (TO_DAYS(timestamp)) (
+    PARTITION p0 VALUES LESS THAN (TO_DAYS('2025-12-04')),
+    PARTITION p1 VALUES LESS THAN (TO_DAYS('2026-12-04')),
+    PARTITION p2 VALUES LESS THAN (TO_DAYS('2027-12-04')),
+    PARTITION p_future VALUES LESS THAN MAXVALUE
+)
